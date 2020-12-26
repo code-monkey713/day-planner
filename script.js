@@ -87,7 +87,7 @@ let myDay = [
 
 myDay.forEach(function(thisHR){
   // this is the hour row in the container div class
-  const hourRow = $('<form>').attr({'class': 'row'});
+  const hourRow = $('<div>').attr({'class': 'row'});
   $('.container').append(hourRow);
 
   const hourEl = $('<div>').text(`${thisHR.hour}${thisHR.ampm}`).attr({'class': 'col-sm-12 col-md-2 hour'});
