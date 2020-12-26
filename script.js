@@ -90,14 +90,14 @@ myDay.forEach(function(thisHR){
   const hourRow = $('<form>').attr({'class': 'row'});
   $('.container').append(hourRow);
 
-  const hourEl = $('<div>').text(`${thisHR.hour}${thisHR.ampm}`).attr({'class': 'col-md-2 hour'});
+  const hourEl = $('<div>').text(`${thisHR.hour}${thisHR.ampm}`).attr({'class': 'col-sm-12 col-md-2 hour'});
 
-  const hourDesc = $('<div>').attr({'class': 'col-md-9 description'});
+  const hourDesc = $('<div>').attr({'class': 'col-sm-12 col-md-9 description'});
   const hourDescText = $('<textarea>');
   hourEl.append(hourDesc);
   hourDesc.append(hourDescText);
   hourDescText.attr('id', thisHR.id);
-  
+
   // hourDescText.attr({'class': 'future'});
   if (thisHR.time < moment().format('HH')) {
     hourDescText.attr ({'class': 'past'})
@@ -109,7 +109,7 @@ myDay.forEach(function(thisHR){
 
   // this is the save button
   const saveBtn = $("<i class='far fa-save fa-lg'></i>");
-  const saveArea = $('<button>').attr({'class': 'col-md-1 saveBtn'});
+  const saveArea = $('<button>').attr({'class': 'col-sm-12 col-md-1 saveBtn'});
   saveArea.append(saveBtn);
 
   hourRow.append(hourEl, hourDesc, saveArea);
