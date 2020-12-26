@@ -88,6 +88,7 @@ textarea{
     height: 40px;
   } */
   .hour {
+    /* margin-top: 10px; */
     text-align: center;
   }
 
@@ -95,9 +96,10 @@ textarea{
     font-size: small;
   }
 
-  .saveArea {
-    height: 300px;
-    margin-bottom: 50px;
+  .saveBtn {
+    /* margin: 5px; */
+    /* height: 300px; */
+    /* margin-bottom: 50px; */
     
   }
 }
