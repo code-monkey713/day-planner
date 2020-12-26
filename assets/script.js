@@ -13,7 +13,7 @@ let myDay = [
     hour: "08",
     time: "08",
     ampm: "am",
-    notes: "start of workday"
+    notes: "You are awesome!"
   },
   {
     id: "1",
@@ -41,7 +41,7 @@ let myDay = [
     hour: "12",
     time: "12",
     ampm: "pm",
-    notes: "noon time"
+    notes: ""
   },
 
   // time will be using 24-hour format so it can be calculated easier while display time will be using AM/PM
@@ -78,16 +78,13 @@ let myDay = [
     hour: "05",
     time: "17",
     ampm: "pm",
-    notes: "closing of workday"
+    notes: ""
   }
-]
+];
 
-// console log the hour value from index 8 of the array
-// console.log(myDay[8].hour);
-
+// this is to draw the hourly time slots
 myDay.forEach(function(thisHR){
-  // this is the hour row in the container div class
-  const hourRow = $('<div>').attr({'class': 'row'});
+  const hourRow = $('<div>').attr({'class': 'row time-block'});
   $('.container').append(hourRow);
 
   const hourEl = $('<div>').text(`${thisHR.hour}${thisHR.ampm}`).attr({'class': 'col-sm-12 col-md-2 hour'});
@@ -98,14 +95,14 @@ myDay.forEach(function(thisHR){
   hourDesc.append(hourDescText);
   hourDescText.attr('id', thisHR.id);
 
-  // hourDescText.attr({'class': 'future'});
+  // this sets the color code for past, present, future event text element
   if (thisHR.time < moment().format('HH')) {
     hourDescText.attr ({'class': 'past'})
   } else if (thisHR.time === moment().format('HH')) {
     hourDescText.attr ({'class': 'present'})
   } else if (thisHR.time > moment().format('HH')) {
     hourDescText.attr ({'class': 'future'})
-  }
+  };
 
   // this is the save button
   const saveBtn = $("<i class='far fa-save fa-lg'></i>");
@@ -113,14 +110,14 @@ myDay.forEach(function(thisHR){
   saveArea.append(saveBtn);
 
   hourRow.append(hourEl, hourDesc, saveArea);
-})
+});
 
+// this starts the app and any events saved from local storage
 function start() {
   const storedEvents = JSON.parse(localStorage.getItem('myDay'));
   if (storedEvents) {
     myDay = storedEvents;
   }
-  // console.log(storedEvents);
   saveNotes();
   displayNotes();
 }
@@ -136,20 +133,13 @@ function displayNotes() {
   })
 }
 
+// function for save event button
 $('.saveBtn').on('click', function (event) {
   event.preventDefault();
-  // console.log('save button was clicked');
   const clickIndex = $(this).siblings('.description').children().attr('id');
-  // console.log(clickIndex);
   myDay[clickIndex].notes = $(this).siblings('.description').children().val();
-  // console.log(clickIndex);
   saveNotes();
   displayNotes();
-})
-
-$('.saveBtn').hover(function() {
-    // console.log('Mouse clicked the save button!');
-    
-  })
+});
 
 start();
