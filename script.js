@@ -95,7 +95,9 @@ myDay.forEach(function(thisHR){
   const hourDesc = $('<div>').attr({'class': 'col-md-9 description'});
   const hourDescText = $('<textarea>');
   hourEl.append(hourDesc);
+  hourDesc.append(hourDescText);
   hourDescText.attr('id', thisHR.id);
+  hourDescText.attr({'class': 'future'});
 
   // create if loops for past, present, future class here
 
@@ -109,3 +111,11 @@ myDay.forEach(function(thisHR){
   hourRow.append(hourEl, hourDesc, saveArea);
 })
 
+// function to add the notes to the description
+// function displayNotes() {
+//   myDay.forEach(function (thisNote) {
+//       $(`#${thisNote.id}`).val(thisNote.notes);
+//   })
+// }
+
+// displayNotes();
