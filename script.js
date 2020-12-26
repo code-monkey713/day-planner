@@ -97,9 +97,15 @@ myDay.forEach(function(thisHR){
   hourEl.append(hourDesc);
   hourDesc.append(hourDescText);
   hourDescText.attr('id', thisHR.id);
-  hourDescText.attr({'class': 'future'});
-
-  // create if loops for past, present, future class here
+  
+  // hourDescText.attr({'class': 'future'});
+  if (thisHR.time < moment().format('HH')) {
+    hourDescText.attr ({'class': 'past'})
+  } else if (thisHR.time === moment().format('HH')) {
+    hourDescText.attr ({'class': 'present'})
+  } else if (thisHR.time > moment().format('HH')) {
+    hourDescText.attr ({'class': 'future'})
+  }
 
   // this is the save button
   const saveBtn = $("<i class='far fa-save fa-lg'></i>");
@@ -141,9 +147,9 @@ $('.saveBtn').on('click', function (event) {
   displayNotes();
 })
 
-// $('.saveBtn').mouseover(function() {
-//     console.log('Mouse clicked the save button!');
+$('.saveBtn').hover(function() {
+    // console.log('Mouse clicked the save button!');
     
-//   })
+  })
 
 start();
