@@ -13,7 +13,7 @@ let myDay = [
     hour: "08",
     time: "08",
     ampm: "am",
-    notes: ""
+    notes: "start of workday"
   },
   {
     id: "1",
@@ -41,7 +41,7 @@ let myDay = [
     hour: "12",
     time: "12",
     ampm: "pm",
-    notes: ""
+    notes: "noon time"
   },
 
   // time will be using 24-hour format while display time will be using AM/PM
@@ -78,7 +78,7 @@ let myDay = [
     hour: "05",
     time: "17",
     ampm: "pm",
-    notes: ""
+    notes: "closing of workday"
   }
 ]
 
@@ -100,9 +100,7 @@ myDay.forEach(function(thisHR){
   hourDescText.attr({'class': 'future'});
 
   // create if loops for past, present, future class here
-
-  // need to append the notes to the description text but in a separate function
-
+  
   // this is the save button
   const saveBtn = $("<i class='far fa-save fa-lg'></i>");
   const saveArea = $('<button>').attr({'class': 'col-md-1 saveBtn'});
@@ -111,11 +109,27 @@ myDay.forEach(function(thisHR){
   hourRow.append(hourEl, hourDesc, saveArea);
 })
 
-// function to add the notes to the description
-// function displayNotes() {
-//   myDay.forEach(function (thisNote) {
-//       $(`#${thisNote.id}`).val(thisNote.notes);
-//   })
-// }
+function start() {
+  const storedEvents = JSON.parse(localStorage.getItem('myDay'));
+  if (storedEvents) {
+    myDay = storedEvents;
+  }
+  // console.log(storedEvents);
+  saveNotes();
+  displayNotes();
+}
 
-// displayNotes();
+function saveNotes() {
+  localStorage.setItem('myDay', JSON.stringify(myDay));
+}
+
+// function to add the notes to the description
+function displayNotes() {
+  myDay.forEach(function (thisNote) {
+      $(`#${thisNote.id}`).val(thisNote.notes);
+  })
+}
+
+
+
+start();
