@@ -44,7 +44,7 @@ let myDay = [
     notes: "noon time"
   },
 
-  // time will be using 24-hour format while display time will be using AM/PM
+  // time will be using 24-hour format so it can be calculated easier while display time will be using AM/PM
   {
     id: "5",
     hour: "01",
@@ -100,7 +100,7 @@ myDay.forEach(function(thisHR){
   hourDescText.attr({'class': 'future'});
 
   // create if loops for past, present, future class here
-  
+
   // this is the save button
   const saveBtn = $("<i class='far fa-save fa-lg'></i>");
   const saveArea = $('<button>').attr({'class': 'col-md-1 saveBtn'});
@@ -130,6 +130,20 @@ function displayNotes() {
   })
 }
 
+$('.saveBtn').on('click', function (event) {
+  event.preventDefault();
+  // console.log('save button was clicked');
+  const clickIndex = $(this).siblings('.description').children().attr('id');
+  // console.log(clickIndex);
+  myDay[clickIndex].notes = $(this).siblings('.description').children().val();
+  // console.log(clickIndex);
+  saveNotes();
+  displayNotes();
+})
 
+// $('.saveBtn').mouseover(function() {
+//     console.log('Mouse clicked the save button!');
+    
+//   })
 
 start();
