@@ -35,6 +35,10 @@ Screen size less than 768px screenshot <br>
 
 I would like to give credit to my instructor Tish McNeel for helping me solve some issues with the responsive page layout. 
 
+References:
+
+https://momentjs.com/
+https://api.jquery.com
 
 
 ## License
