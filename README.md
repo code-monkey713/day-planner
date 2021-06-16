@@ -43,4 +43,4 @@ https://api.jquery.com
 
 ## License
 
-There is no license for this project. 
+MIT
