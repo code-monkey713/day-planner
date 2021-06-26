@@ -1,7 +1,7 @@
-function getCurrentDate() {
+const getCurrentDate = () => {
   let currentDate = moment().format('MMMM Do YYYY, h:mma');
   $('#currentDay').text(currentDate);
-}
+};
 
 getCurrentDate();
 
@@ -114,25 +114,25 @@ myDay.forEach(function (thisHR) {
 });
 
 // this starts the app and any events saved from local storage
-function start() {
+const start = () => {
   const storedEvents = JSON.parse(localStorage.getItem('myDay'));
   if (storedEvents) {
     myDay = storedEvents;
   }
   saveNotes();
   displayNotes();
-}
+};
 
-function saveNotes() {
+const saveNotes = () => {
   localStorage.setItem('myDay', JSON.stringify(myDay));
-}
+};
 
 // function to add the notes to the description
-function displayNotes() {
+const displayNotes = () => {
   myDay.forEach(function (thisNote) {
     $(`#${thisNote.id}`).val(thisNote.notes);
   });
-}
+};
 
 // function for save event button
 $('.saveBtn').on('click', function (event) {
